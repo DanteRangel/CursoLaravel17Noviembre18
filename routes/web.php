@@ -46,11 +46,12 @@ Route::get('ejercicio/{numero1}/{numero2}/{operacion}', function($numero1, $nume
 //Route::get('permisos','PruebaController@primerMetodo');
 #Route::resource('permisos', 'PruebaController');
 
-Route::get('permisos', 'PruebaController@index');
-Route::post('permisos', 'PruebaController@store');
-Route::get('permisos/create', 'PruebaController@create');
-Route::get('permisos/{id}/edit', 'PruebaController@edit');
-Route::put('permisos/{id}', 'PruebaController@update');
+// Route::get('permisos', 'PruebaController@index');
+// Route::post('permisos', 'PruebaController@store');
+// Route::get('permisos/create', 'PruebaController@create');
+// Route::get('permisos/{id}/edit', 'PruebaController@edit');
+// Route::put('permisos/{id}', 'PruebaController@update');
+// Route::delete('permisos/{id}', 'PruebaController@destroy')->name('permisos.destroy');
 
 
-
+Route::resource('permisos', 'PruebaController');

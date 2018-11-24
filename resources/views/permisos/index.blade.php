@@ -22,18 +22,32 @@
                             <td>{{$permiso->name}}</td>
                             <td>
                                 <button class="btn btn-info" onclick="detalles({{$permiso->id}})">Detalles</button>
-                                <button class="btn btn-danger" onclick="delete({{$permiso->id}})">Eliminar</button>                            </td>
+                                <button class="btn btn-danger" onclick="deleteItem({{$permiso->id}})">Eliminar</button>                            </td>
                         </tr>
+
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    
+    <form id="formDelete" action="" method="POST">
+        @csrf
+        @method('DELETE')
+        <!--<input type="hidden" name="_method" value="DELETE">-->
+        
+    </form>
 @endsection
-
-<script>
-    function detalles(id) {
-        window.location = "{{url('permisos')}}/" + id + '/edit';
-    }
-</script>
+@section('js')
+    <script>
+        
+        function detalles (id) {
+            window.location = "{{url('permisos')}}/" + id + '/edit';
+        }
+        function deleteItem (id) {
+            let url = "{{url('permisos')}}";
+            url += '/' + id;
+            $('#formDelete').attr('action', url);
+            $('#formDelete').submit();
+        }
+    </script>
+@endsection
