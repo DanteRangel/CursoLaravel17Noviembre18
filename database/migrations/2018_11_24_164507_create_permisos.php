@@ -13,10 +13,11 @@ class CreatePermisos extends Migration
      */
     public function up()
     {
-        Schema::create('permisos', function(Blueprint $table) {
+        Schema::create('permission', function(Blueprint $table)
+        {
             $table->increments('id');
             $table->text('name');
-        });
+        }); 
     }
 
     /**

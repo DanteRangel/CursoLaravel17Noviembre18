@@ -54,4 +54,12 @@ Route::get('ejercicio/{numero1}/{numero2}/{operacion}', function($numero1, $nume
 // Route::delete('permisos/{id}', 'PruebaController@destroy')->name('permisos.destroy');
 
 
-Route::resource('permisos', 'PruebaController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
+    Route::resource('permisos', 'PruebaController');
+
+});

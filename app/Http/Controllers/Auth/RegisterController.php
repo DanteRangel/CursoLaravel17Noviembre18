@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\{User, Permisos};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,6 +67,13 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'id_permission' => $data['id_permission']
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $permisos = Permisos::all();
+        return view('auth.register', compact('permisos'));
     }
 }
