@@ -63,3 +63,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     Route::resource('permisos', 'PruebaController');
 
 });
+
+Route::resource('product', 'ProductController');
