@@ -3,9 +3,16 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-ofsset-md-2">
+            <div class="col-md-12 pull-right">
+                <a href="{{url('product/create')}}" class="btn btn-info" > Agregar producto </a>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-offset-2 col-md-8 ">
                 <div class="table">
-                    <table class="table-responsive">
+                    <table class="table-striped" style="width:100%">
                         <thead>
                             <th></th>
                             <th>Nombre</th>
@@ -18,7 +25,6 @@
                                 <tr>
                                     <td>
                                         @if(count($product->images) > 0)
-                                        {{$product->images[0]->url}}
                                             <img width="30px" src="{{asset('storage/images/' . $product->images[0]->url)}}" alt="">
                                         @else
                                             <img width="30px" src="{{asset('storage/images/img.png')}}" alt="">
