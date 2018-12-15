@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row   float-right ">
-        <a class="btn btn-success" href="{{url('permisos/create')}}">Crear nuevo</a>
+        <a class="btn btn-success" href="{{route('permisos.create')}}">Crear nuevo</a>
     </div>
     <div class="row mt-4">
 
@@ -41,10 +41,10 @@
     <script>
         
         function detalles (id) {
-            window.location = "{{url('permisos')}}/" + id + '/edit';
+            window.location = "{{route('permisos.index')}}/" + id + '/edit';
         }
         function deleteItem (id) {
-            let url = "{{url('permisos')}}";
+            let url = "{{route('permisos.index')}}";
             url += '/' + id;
             $('#formDelete').attr('action', url);
             $('#formDelete').submit();
