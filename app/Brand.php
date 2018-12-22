@@ -12,3 +12,4 @@ class Brand extends Model
 
     public $timestamps = false;
 }
+ 

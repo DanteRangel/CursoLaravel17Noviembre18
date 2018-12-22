@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Category,Brand,Product};
+use App\{Category,Brand,Product,Image};
+use Storage;
 class ProductController extends Controller
 {
     /**
@@ -37,7 +38,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request,[
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'id_brand' => 'required|numeric|exists:brand,id',
+            'id_category' => 'required|numeric|exists:category,id',
+            'image' =>  'required|mimes:jpeg,bmp,png,svg',
+        ]);
+     
+        $product = Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'stock' => $request->stock,
+            'id_brand' => $request->id_brand,
+            'id_category' => $request->id_category
+        ]);
+
+        $nameImage = md5(date('YYYY-MM-dd HH:mm:ss')) . "." . $request->image->getClientOriginalExtension();
+        $request->image->storeAs('public/images', $nameImage);
+        Storage::disk('images')->put($nameImage, $request->image);
+        return $request->image;
+        Image::create([
+            'url' => $nameImage,
+            'id_product' => $product->id
+        ]);
+        return redirect()->route('product.index');
+
     }
 
     /**

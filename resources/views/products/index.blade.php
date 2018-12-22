@@ -25,9 +25,10 @@
                                 <tr>
                                     <td>
                                         @if(count($product->images) > 0)
-                                            <img width="30px" src="{{asset('storage/images/' . $product->images[0]->url)}}" alt="">
+                                            <img width="30px" src="{{asset('/storage/images/' . $product->images[0]->url)}}" alt="">
                                         @else
-                                            <img width="30px" src="{{asset('storage/images/img.png')}}" alt="">
+                                            <img width="30px" src="{{asset('/
+                                            storage/images/img.png')}}" alt="">
                                         @endif
                                     </td>
                                     <td>{{$product->name}}</td>

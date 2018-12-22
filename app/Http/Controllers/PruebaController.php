@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Permisos;
+use App\Permission;
 class PruebaController extends Controller
 {
 
@@ -14,7 +14,7 @@ class PruebaController extends Controller
     }
 
     public function index(){
-        $permisos = Permisos::all();
+        $permisos = Permission::all();
         //compact('permisos');
         return view('permisos.index' , ['permisos' => $permisos]);
     }
@@ -28,7 +28,7 @@ class PruebaController extends Controller
             'name' => 'required|string'
         ]);
 
-        $permiso = Permisos::create([
+        $permiso = Permission::create([
             'name' => $request->name
         ]);
 
@@ -36,7 +36,7 @@ class PruebaController extends Controller
     }
 
     public function edit(Request $request, $id){
-        return view('permisos.edit', ['permiso' => Permisos::find($id)]);
+        return view('permisos.edit', ['permiso' => Permission::find($id)]);
     }
 
     public function update(Request $request, $id){
@@ -44,14 +44,14 @@ class PruebaController extends Controller
             'name' => 'required|string'
         ]);
 
-        $permiso = Permisos::find($id);
+        $permiso = Permission::find($id);
         $permiso->name = $request->name;
         $permiso->save();
 
         return redirect('/permisos');        
     }
     public function destroy(Request $request, $id) {
-        if ($permiso = Permisos::find($id)) {
+        if ($permiso = Permission::find($id)) {
             $permiso->delete();
         }
 
