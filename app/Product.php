@@ -15,10 +15,4 @@ class Product extends Model
     public function images() {
         return $this->hasMany('App\Image', 'id_product');
     }
-    public function brand() {
-        return $this->belongsTo('App\Brand', 'id_brand');
-    }
-    public function category(){
-        return $this->belongsTo('App\Category', 'id_category');
-    }
 }
